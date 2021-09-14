@@ -1,70 +1,136 @@
-# Getting Started with Create React App
+# ReactWebsiteSample
+This is a React Website that pulls data from the Open Brewery API.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Wyn Designer Sample
 
-## Available Scripts
+This sample demonstrates the use of GrapeCity ActiveReports WynDesigner connected to the Wyn portal.
 
-In the project directory, you can run:
+## System requirements
 
-### `npm start`
+This sample requires:
+ * [Node.js](https://nodejs.org/en/download/)
+ * [GoogleMapAPI Key](https://developers.google.com/maps/documentation/javascript/get-api-key)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Build and run the sample
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Description
 
-### `npm test`
+This sample will be showing all the locations in Pittsburgh, PA (in ascending order).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You will need to add a GoogleMapAPI key withing the <strong>BreweryCardItem.js</strong> to be able to see the map and the marker.
+```javascript
 
-### `npm run build`
+import React from "react";
+import GoogleMapReact from "google-map-react";
+import { Icon } from "@iconify/react";
+import locationIcon from "@iconify/icons-mdi/map-marker";
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+import "./Map.css";
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+function CardItem(props) {
+  const location = {
+    center: {
+      lat: 40.4406,
+      lng: -79.9959,
+    },
+  };
+  const LocationPin = ({ text }) => (
+    <div className="pin">
+      <Icon icon={locationIcon} className="pin-icon" />
+      <p className="pin-text"> {text} </p>{" "}
+    </div>
+  );
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  return (
+    <>
+      <li className="cards__item">
+        <div className="cards__item__link">
+          <div className="cards__item__info">
+            <h4 className="cards__item__text"> {props.name} </h4>{" "}
+          </div>
+          <div className="cards__item__info__brewerytype">
+            <h5 className="cards__item__text"> Type: {props.label} </h5>{" "}
+          </div>{" "}
+          <div className="cards__item__info__address">
+            <h5 className="cards__item__text"> {props.address} </h5>{" "}
+          </div>{" "}
+          <div className="cards__item__info__website">
+            {" "}
+            {props.website != null ? (
+              <h5 className="cards__item__text">
+                {" "}
+                Website :{" "}
+                <a href={props.website} className="cards__item__text">
+                  {" "}
+                  {props.website}{" "}
+                </a>
+              </h5>
+            ) : (
+              <h5 className="cards__item__text"> Website: N / a </h5>
+            )}{" "}
+          </div>
+          <div
+            className="cards__item__info__map"
+            style={{
+              height: "100vh",
+              width: "100%",
+            }}
+          >
+            <GoogleMapReact
+              key={props.mapkey}
+              bootstrapURLKeys={{
+                key: "ENTER YOUR API KEY HERE",
+              }}
+              center={location.center}
+              defaultZoom={11.5}
+              hoverDistance={400 / 20}
+              yesIWantToUseGoogleMapApiInternals
+            >
+              <LocationPin
+                lat={props.lat}
+                lng={props.lng}
+                text={[props.address]}
+              />
+            </GoogleMapReact>
+          </div>
+        </div>{" "}
+      </li>{" "}
+    </>
+  );
+}
 
-### `npm run eject`
+export default CardItem;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Below is a list of some of the packages beening used:
+ * axios
+ * google-map-react
+ * react-dom
+ * react-router-dom
+ * @iconify/react
+ * @iconify/icons-mdi
+    
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Steps
 
-## Learn More
+1. Execute `npm install react`
+2. Execute `npm start`
+2. Open http://localhost:3000 by browser
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Sample output
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![](screenshots/HomePage.png)
 
-### Code Splitting
+### GoogleMap and Marker
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+When you open the application, you will have a zoomed out view of the city of Pittsburgh.  To see the markers location, you can zoom in and the marker will adjust based on the zoom level.  Below is an example of what the marker looks when it is zoomed in and zoom out.
 
-### Making a Progressive Web App
+#### Zoomed in
+![](screenshots/BreweryScreenshot.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### Zoomed out
+![](screenshots/BreweryScreenshot2.png)
