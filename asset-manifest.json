@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/ReactWebsiteSample/static/css/main.c6ae7ae9.chunk.css",
+    "main.js": "/ReactWebsiteSample/static/js/main.7caaa703.chunk.js",
+    "main.js.map": "/ReactWebsiteSample/static/js/main.7caaa703.chunk.js.map",
+    "runtime-main.js": "/ReactWebsiteSample/static/js/runtime-main.be920158.js",
+    "runtime-main.js.map": "/ReactWebsiteSample/static/js/runtime-main.be920158.js.map",
+    "static/js/2.fa74e145.chunk.js": "/ReactWebsiteSample/static/js/2.fa74e145.chunk.js",
+    "static/js/2.fa74e145.chunk.js.map": "/ReactWebsiteSample/static/js/2.fa74e145.chunk.js.map",
+    "index.html": "/ReactWebsiteSample/index.html",
+    "static/css/main.c6ae7ae9.chunk.css.map": "/ReactWebsiteSample/static/css/main.c6ae7ae9.chunk.css.map",
+    "static/js/2.fa74e145.chunk.js.LICENSE.txt": "/ReactWebsiteSample/static/js/2.fa74e145.chunk.js.LICENSE.txt",
+    "static/media/HeroSection.css": "/ReactWebsiteSample/static/media/pittsburgh-unsplash.5c739b5c.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.be920158.js",
+    "static/js/2.fa74e145.chunk.js",
+    "static/css/main.c6ae7ae9.chunk.css",
+    "static/js/main.7caaa703.chunk.js"
+  ]
+}
