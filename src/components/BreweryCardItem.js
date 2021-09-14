@@ -57,7 +57,7 @@ function CardItem(props) {
             <GoogleMapReact
               key={props.mapkey}
               bootstrapURLKeys={{
-                key: "AIzaSyA5SJrmO2GLImg-F-_LkcRiJqDNd1Kqhu8",
+                key: "ENTER YOUR KEY HERE",
               }}
               center={location.center}
               defaultZoom={11.5}
