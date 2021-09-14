@@ -1,10 +1,6 @@
 # ReactWebsiteSample
 This is a React Website that pulls data from the Open Brewery API.
 
-# Wyn Designer Sample
-
-This sample demonstrates the use of GrapeCity ActiveReports WynDesigner connected to the Wyn portal.
-
 ## System requirements
 
 This sample requires:
